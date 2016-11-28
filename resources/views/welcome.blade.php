@@ -92,11 +92,6 @@
                                         <span class="nav-text">Branches</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="/customers/show">
-                                        <span class="nav-text">Customers</span>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
 
