@@ -95,6 +95,7 @@
                                 <li>
                                     <a href="/customers/show">
                                         <span class="nav-text">Customers</span>
+
                                     </a>
                                 </li>
                             </ul>
