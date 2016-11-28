@@ -42,4 +42,8 @@ class User extends Authenticatable
         'id',
         'remember_token',
     ];
+
+    public function customers () {
+        return $this->hasMany(Customer::class);
+    }
 }
