@@ -94,6 +94,31 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a>
+                    <span class="nav-caret">
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                                <span class="nav-icon">
+                      <i class="material-icons">&#xe886;
+                        <span ui-include="'/assets/images/i_1.svg'"></span>
+                      </i>
+                    </span>
+                                <span class="nav-text">Customers</span>
+                            </a>
+                            <ul class="nav-sub">
+                                <li>
+                                    <a href="/customers/show">
+                                        <span class="nav-text">Show Customers</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/customers/add">
+                                        <span class="nav-text">Add Customers</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
                         <li class="nav-header hidden-folded">
                             <small class="text-muted">Help</small>
