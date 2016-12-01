@@ -68,6 +68,7 @@
                                 <span class="nav-text">Home</span>
                             </a>
                         </li>
+                        @if (Auth::check())
 
                         <li>
                             <a>
@@ -129,7 +130,7 @@
                                 <span class="nav-text">Documents</span>
                             </a>
                         </li>
-
+@endif
                     </ul>
                 </nav>
             </div>
@@ -151,7 +152,7 @@
                 <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
 
                 <!-- navbar collapse -->
-                <nav class="navbar">
+                <div class="navbar">
                     @if (Route::has('login'))
                         <ul class="nav navbar-nav">
                             @if (Auth::check())
@@ -171,8 +172,10 @@
                             @endif
                         </ul>
                     @endif
-                </nav>
+                </div>
                 <!-- / navbar collapse -->
+                </nav>
+                </ul>
             </div>
         </div>
         <div class="app-footer">
@@ -194,7 +197,7 @@
 
             <!-- ############ PAGE START-->
 
-            <div class="flex-center position-ref full-height">
+            <div class="flex-center position-ref full-height" style="padding-top: 150px">
                 @yield('content')
             </div>
 
