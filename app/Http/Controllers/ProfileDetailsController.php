@@ -65,4 +65,9 @@ class ProfileDetailsController extends Controller {
             'btw'         => request()->btw,
         ])->save();
     }
+
+    public function edit () {
+        $user = Auth::user();
+        return view('auth.profile', compact('user'));
+    }
 }
