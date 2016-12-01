@@ -30,7 +30,7 @@
 
                                 <div class="col-md-6">
                                     <input id="firstName" type="text" class="form-control" name="firstName"
-                                           value="{{ old('firstName') }}" required autofocus>
+                                           value="{{ old('firstName') }}" required>
 
                                     @if ($errors->has('firstName'))
                                         <span class="help-block">

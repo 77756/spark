@@ -28,7 +28,8 @@ Route::post('/customers/store', 'CustomerController@store');
 
 Route::patch('/customers/{customer}/update', 'CustomerController@update');
 
-Route::put('/settings/profile/details', 'ProfileDetailsController@update');
+Route::get('/profile/', 'ProfileDetailsController@edit');
+Route::patch('/profile/update', 'ProfileDetailsController@update');
 
 
 Route::get('/categories', 'CategoryController@index');

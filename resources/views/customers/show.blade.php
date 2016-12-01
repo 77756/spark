@@ -38,5 +38,7 @@
         @else
             No entries
         @endif
+
+        <a href="/customers/add" class="btn btn-primary btn-sm">New customer</a>
     </div>
 @endsection

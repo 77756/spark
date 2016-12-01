@@ -139,9 +139,9 @@
 
     <!-- content -->
     <div id="content" class="app-content box-shadow-z0" role="main">
-        <div class="app-header white box-shadow">
-            <div class="navbar">
-                <!-- Open side - Naviation on mobile -->
+        <ul class="app-header white box-shadow">
+            <nav class="navbar">
+                <!-- Open side - Navigation on mobile -->
                 <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
                     <i class="material-icons">&#xe5d2;</i>
                 </a>
@@ -151,18 +151,27 @@
                 <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
 
                 <!-- navbar collapse -->
-                <div class="collapse navbar-toggleable-sm" id="collapse">
+                <nav class="navbar">
                     @if (Route::has('login'))
-                        <div class="top-right links">
+                        <ul class="nav navbar-nav">
                             @if (Auth::check())
-                                <a href="{{ url('/home') }}">Home</a>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/home">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/logout">Logout</a>
+                                </li>
                             @else
-                                <a href="{{ url('/login') }}">Login</a>
-                                <a href="{{ url('/register') }}">Register</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Login</a>
+                                </li>
                             @endif
-                        </div>
+                        </ul>
                     @endif
-                </div>
+                </nav>
                 <!-- / navbar collapse -->
             </div>
         </div>
@@ -184,6 +193,7 @@
         <div ui-view class="app-body" id="view">
 
             <!-- ############ PAGE START-->
+
             <div class="flex-center position-ref full-height">
                 @yield('content')
             </div>
