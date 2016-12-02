@@ -1,6 +1,7 @@
 @extends('welcome')
 
 @section('content')
+    <div class="container">
     <div class="col-md-offset-1 col-md-9">
         <div class="panel panel-default">
             <div class="panel-heading">All Companies</div>
@@ -43,6 +44,7 @@
         @endif
 
         <a href="/customers/add" class="btn btn-primary btn-sm">New customer</a>
+    </div>
     </div>
     </div>
     </div>
