@@ -152,7 +152,7 @@
                 <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
 
                 <!-- navbar collapse -->
-                <div class="navbar">
+                <div class="nav navbar-nav">
                     @if (Route::has('login'))
                         <ul class="nav navbar-nav">
                             @if (Auth::check())
@@ -171,6 +171,14 @@
                                 </li>
                             @endif
                         </ul>
+                    @endif
+                </div>
+
+                <div class="nav navbar-nav navbar-right">
+                    @if (Auth::check())
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
                     @endif
                 </div>
                 <!-- / navbar collapse -->

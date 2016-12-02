@@ -16,6 +16,8 @@
                     <hr>
                     <form role="form" action="/profile/{{ Auth::user()->id }}/update" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input name="_method" type="hidden" value="PATCH">
+
                         <!-- row 1 -->
                         <div class="row">
                             <!-- company name -->
@@ -87,10 +89,10 @@
                             <!-- company street -->
                             <div class="form-group col-xs-6" id="streetDiv">
                                 <label for="street" class="control-label">Street</label>
-                                <input type="text" class="form-control" name="street" id="street"
+                                <input type="text" class="form-control" name="streetName" id="streetName"
                                        value="{{ Auth::user()->streetName }}">
-                                @if ($errors->has('street'))
-                                    @foreach($errors->get('street') as $error)
+                                @if ($errors->has('streetName'))
+                                    @foreach($errors->get('streetName') as $error)
                                         <span class="help-block">{{ $error }}</span>
                                     @endforeach
                                 @endif
