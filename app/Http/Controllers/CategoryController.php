@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Branches;
 use App\Category;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
@@ -29,20 +30,13 @@ class CategoryController extends Controller {
         return view('Categories.show', compact('category'));
     }
 
-    public function store () {
+    public function store (Branches $branche) {
         $category = new Category;
-
         $this->validate(request(), [
             'name' => 'required|unique:categories,name,' . $category->id . '|filled',
         ]);
-
         $category->name = request()->name;
-        DB::table('categories')->insert([
-            'name'       => $category->name,
-            'created_at' => DateTime::dateTime(),
-            'updated_at' => DateTime::dateTime()
-        ]);
-
+        $branche->categories()->save($category);
         return back();
     }
 

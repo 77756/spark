@@ -38,6 +38,12 @@
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->created_at}}</td>
+                                <td>
+                                    <a href="/categories/{{$category->id}}"
+                                       class="btn btn-warning btn-sm">
+                                        Go To
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
