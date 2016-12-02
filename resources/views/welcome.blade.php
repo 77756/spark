@@ -197,7 +197,7 @@
 
             <!-- ############ PAGE START-->
 
-            <div class="flex-center position-ref full-height" style="padding-top: 150px">
+            <div class="flex-center position-ref full-height" style="padding-top: 100px; padding-left: 150px;">
                 @yield('content')
             </div>
 

@@ -1,7 +1,10 @@
 @extends('welcome')
 
 @section('content')
-    <div class="container">
+    <div class="col-md-offset-1 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">All Companies</div>
+        <div class="panel-body">
         @if($user->customers)
             <table class="table table-striped table-responsive sortable">
                 <thead>
@@ -40,5 +43,7 @@
         @endif
 
         <a href="/customers/add" class="btn btn-primary btn-sm">New customer</a>
+    </div>
+    </div>
     </div>
 @endsection
