@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="/assets/glyphicons/glyphicons.css" type="text/css"/>
     <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="/assets/material-design-icons/material-design-icons.css" type="text/css"/>
-
     <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.css" type="text/css"/>
     <!-- build:css /assets/styles/app.min.css -->
     <link rel="stylesheet" href="/assets/styles/app.css" type="text/css"/>
     <!-- endbuild -->
@@ -153,12 +153,21 @@
                 <!-- navbar collapse -->
                 <div class="collapse navbar-toggleable-sm" id="collapse">
                     @if (Route::has('login'))
-                        <div class="top-right links">
+                        <div class="top-right left">
                             @if (Auth::check())
-                                <a href="{{ url('/home') }}">Home</a>
+                                <a class="nav-link" href="{{ url('/home') }}">
+                                    <i class="fa fa-fw fa-home text-muted"></i>
+                                    <span>Home</span>
+                                </a>
                             @else
-                                <a href="{{ url('/login') }}">Login</a>
-                                <a href="{{ url('/register') }}">Register</a>
+                                <a href="{{ url('/login') }}">
+                                    <i class="fa fa-fw glyphicon-log-in text-muted"></i>
+                                    <span>Login</span>
+                                </a>
+                                <a href="{{ url('/register') }}">
+                                    <i class="fa fa-fw glyphicon-registration-mark text-muted"></i>
+                                    <span>Register</span>
+                                </a>
                             @endif
                         </div>
                     @endif
@@ -202,7 +211,15 @@
 </div>
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
-<script src="/libs/jquery/jquery/dist/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script src="/libs/jquery/screenfull/dist/screenfull.min.js"></script>
+<script src="/libs/jquery/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.dataTable').DataTable();
+    })
+</script>
 <!-- Bootstrap -->
 <script src="/libs/jquery/tether/dist/js/tether.min.js"></script>
 <script src="/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
@@ -223,6 +240,7 @@
 <script src="/js/scripts/ui-screenfull.js"></script>
 <script src="/js/scripts/ui-scroll-to.js"></script>
 <script src="/js/scripts/ui-toggle-class.js"></script>
+
 
 <script src="/js/scripts/app.js"></script>
 

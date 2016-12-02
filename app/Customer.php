@@ -37,4 +37,8 @@ class Customer extends Model {
     public function contactPerson () {
         return $this->hasOne(User::class);
     }
+
+    public function skills () {
+        return $this->hasMany(Skill::class);
+    }
 }
