@@ -58,3 +58,5 @@ Route::patch('/branches/{branche}/update', 'BrancheController@update');
 Route::get('/branches/{branche}/delete', 'BrancheController@delete');
 Route::post('/newbranche', 'BrancheController@store');
 
+Route::get('/profile', 'ProfileController@index');
+Route::get('/profile/{{ Auth::user->id}}/update', 'ProfileController@update');

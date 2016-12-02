@@ -6,7 +6,7 @@
             <h2>Welcome to the homepage</h2>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+                <div class="panel-heading">Welcome {{ Auth::User() ->firstName}}</div>
                 <div class="panel-body">You're logged in.</div>
             </div>
         </div>
