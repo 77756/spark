@@ -178,15 +178,15 @@
         <div class="app-footer">
             <div class="p-a text-xs">
                 <div class="pull-right text-muted">
-                    &copy; Copyright <strong>Flatkit</strong> <span
-                            class="hidden-xs-down">- Built with Love v1.1.3</span>
+                    &copy; Copyright <strong>Lilopel</strong> <span
+                            class="hidden-xs-down">- Private project</span>
                     <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
                 </div>
                 <div class="nav">
                     <a class="nav-link" href="/">About</a>
                     <span class="text-muted">-</span>
-                    <a class="nav-link label accent" href="http://themeforest.net/user/flatfull/portfolio?ref=flatfull">Get
-                        it</a>
+                    <a class="nav-link label accent" href="https://www.lilopel.nl/">
+                        Lilopel</a>
                 </div>
             </div>
         </div>
