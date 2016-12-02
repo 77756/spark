@@ -1,14 +1,10 @@
 @extends('welcome')
 
 @section('content')
-    <div class="row">
-        <div class="container">
-            <h2>Welcome to the homepage</h2>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
-                <div class="panel-body">You're logged in.</div>
-            </div>
+    <div class="padding">
+        <div class="box">
+            <div class="box-header"><h2>Welcome to the homepage</h2></div>
+            <div class="box-body">You're logged in.</div>
         </div>
     </div>
 @endsection

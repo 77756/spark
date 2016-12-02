@@ -100,6 +100,7 @@
                                     <select name="type" id="type" class="form-control">
                                         <option value="" selected>-- Choose user type --</option>
                                         <option value="Guest">Guest</option>
+                                        <option value="Company">Company</option>
                                         <option value="Contact person">Contact person</option>
                                         <option value="Admin">Admin</option>
                                     </select>
