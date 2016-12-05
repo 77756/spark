@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/customers/add', 'CustomerController@add');
 Route::get('/customers/show', 'CustomerController@show');
 
+
 Route::get('/customers/{customer}/delete', 'CustomerController@delete');
 Route::get('/customers/{customer}/more', 'CustomerController@more');
 Route::get('/customers/{customer}/edit', 'CustomerController@edit');

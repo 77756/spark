@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="/assets/material-design-icons/material-design-icons.css" type="text/css"/>
     <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" type="text/css"/>
     <!-- build:css /assets/styles/app.min.css -->
     <link rel="stylesheet" href="/assets/styles/app.css" type="text/css"/>
     <!-- endbuild -->
@@ -79,7 +79,7 @@
                         <span ui-include="'/assets/images/i_1.svg'"></span>
                       </i>
                     </span>
-                    <span class="nav-text">Search</span>
+                                <span class="nav-text">Search</span>
                             </a>
                             <ul class="nav-sub">
                                 <li>
@@ -198,7 +198,6 @@
             </div>
 
 
-
             <!-- ############ PAGE END-->
 
         </div>
@@ -212,14 +211,11 @@
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
-<script src="/libs/jquery/screenfull/dist/screenfull.min.js"></script>
-<script src="/libs/jquery/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.dataTable').DataTable();
-    })
-</script>
+
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="/libs/jquery/tether/dist/js/tether.min.js"></script>
 <script src="/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
@@ -248,5 +244,6 @@
 <script src="/libs/jquery/jquery-pjax/jquery.pjax.js"></script>
 <script src="/js/scripts/ajax.js"></script>
 <!-- endbuild -->
+@stack('scripts')
 </body>
 </html>
