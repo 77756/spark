@@ -1,12 +1,12 @@
 @extends('welcome')
 
 @section('content')
-    <div class="row">
+    <div class="padding">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h1>All Categories</h1></div>
-                <div class="panel-body">
-                    <h2>Add a new category</h2>
+            <div class="box">
+                <div class="box-header"><h2>All Categories</h2></div>
+                <div class="box-body">
+                    <strong>New category</strong>
                     <form action="/categories/add" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div id="nameDiv" class="form-group">

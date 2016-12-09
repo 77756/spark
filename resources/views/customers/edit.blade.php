@@ -1,13 +1,13 @@
 @extends('welcome')
 
 @section('content')
-    <div id="edit_panel" class="col-md-10 col-md-offset-1">
+    <div class="padding">
         <form role="form" action="/customers/{{ $customer->id }}/update" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             {{ method_field('patch') }}
-            <div class="panel panel-default">
-                <div class="panel-heading">Edit customer</div>
-                <div class="panel-body">
+            <div class="box">
+                <div class="box-header">Edit customer</div>
+                <div class="box-body">
                     <!-- row 1 -->
                     <div class="row">
                         <!-- company name -->
@@ -162,11 +162,9 @@
                             @endif
                         </div>
                     </div>
-                    <br/>
+                    <hr/>
                     <!-- /row 5 -->
-                    <div class="row pull-left">
-                        <button type="submit" class="btn btn-primary col-xs-offset-2">Update customer</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </form>

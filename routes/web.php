@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/logout', 'HomeController@logout');
 
 Route::get('/customers/add', 'CustomerController@add');
 Route::get('/customers/show', 'CustomerController@show');
@@ -29,8 +30,11 @@ Route::post('/customers/store', 'CustomerController@store');
 
 Route::patch('/customers/{customer}/update', 'CustomerController@update');
 
-Route::get('/profile/', 'ProfileDetailsController@edit');
-Route::patch('/profile/update', 'ProfileDetailsController@update');
+Route::get('/settings', 'ProfileDetailsController@edit');
+Route::get('/settings/delete', 'ProfileDetailsController@delete');
+Route::patch('/settings/profile/update', 'ProfileDetailsController@profileUpdate');
+Route::patch('/settings/contact/update', 'ProfileDetailsController@contactUpdate');
+Route::patch('/settings/security/update', 'ProfileDetailsController@securityUpdate');
 
 
 Route::get('/categories', 'CategoryController@index');

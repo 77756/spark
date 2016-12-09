@@ -13,15 +13,15 @@ var MODULE_CONFIG = {
                       '/libs/jquery/bower-jvectormap/jquery-jvectormap-world-mill-en.js',
                       '/libs/jquery/bower-jvectormap/jquery-jvectormap-us-aea-en.js' ],
     dataTable:      [
-                      '/libs/jquery/datatables/media/js/jquery.dataTables.min.js',
-                      '/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.js',
-                      '/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.css'],
+                      'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js',
+                      'https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js',
+                      'https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'],
     footable:       [
                       '/libs/jquery/footable/dist/footable.all.min.js',
                       '/libs/jquery/footable/css/footable.core.css'
                     ],
     screenfull:     [
-                      '/libs/jquery/screenfull/dist/screenfull.min.js'
+                      'https://cdn.bootcss.com/screenfull.js/3.0.2/screenfull.js'
                     ],
     sortable:       [
                       '/libs/jquery/html.sortable/dist/html.sortable.min.js'

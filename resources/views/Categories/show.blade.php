@@ -1,12 +1,12 @@
 @extends('welcome')
 
 @section('content')
-    <div class="row">
+    <div class="padding">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h1>{{ $category->name }}</h1></div>
-                <div class="panel-body">
-                    <h3>Add a new skill</h3>
+            <div class="box">
+                <div class="box-header"><h2>{{ $category->name }}</h2></div>
+                <div class="box-body">
+                    <h3>Add new entry</h3>
                     <form action="/newskill/{{ $category->id }}" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div id="nameDiv" class="form-group">
@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Add Skill</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                     <hr>

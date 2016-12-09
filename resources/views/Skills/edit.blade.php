@@ -1,14 +1,14 @@
 @extends('welcome')
 
 @section('content')
-    <div class="row">
+    <div class="padding">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h2>{{ $skill->name }}</h2></div>
-                <div class="panel-body">
+            <div class="box">
+                <div class="box-header"><h2>{{ $skill->name }}</h2></div>
+                <div class="box-body">
                     <ul class="list-group">
                     </ul>
-                    <h3>Update skill name</h3>
+                    <strong>Edit {{$skill->name}}</strong>
                     <form role="form" action="/skill/{{ $skill->id }}/update" method="post">
                         {{ method_field('patch') }}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -21,7 +21,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Update skill</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         <div class="form-group">
                             <a href="/categories/{{$skill->category_id}}" class="btn btn-warning">Back</a>

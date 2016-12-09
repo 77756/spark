@@ -1,12 +1,12 @@
 @extends('welcome')
 
 @section('content')
-    <div class="row">
+    <div class="padding">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h1>All Branches</h1></div>
-                <div class="panel-body">
-                    <h2>Add a new branche</h2>
+            <div class="box">
+                <div class="box-header"><h2>All Branches</h2></div>
+                <div class="box-body">
+                    <strong>New branche</strong>
                     <form action="/newbranche" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">

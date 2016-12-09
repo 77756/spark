@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('content')
-    <div class="row">
+    <div class="padding">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h1>{{ $branche->name }}</h1></div>
-                <div class="panel-body">
+            <div class="box">
+                <div class="box-header"><h2>{{ $branche->name }}</h2></div>
+                <div class="box-body">
                     <h3>Add a category to the branche {{ $branche->name }}</h3>
 
                     <div class="form-check">

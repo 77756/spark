@@ -2,10 +2,10 @@
 
 @section('content')
     <!-- add company panel -->
-    <div class="col-md-offset-1 col-md-10">
-        <div class="panel panel-default">
-            <div class="panel-heading">Add company</div>
-            <div class="panel-body">
+    <div class="padding">
+        <div class="box">
+            <div class="box-header"><h2>Add customer</h2></div>
+            <div class="box-body">
                 <form role="form" action="/customers/store" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <!-- row 1 -->
@@ -162,11 +162,9 @@
                             @endif
                         </div>
                     </div>
-                    <hr>
+                    <hr/>
                     <!-- /row 5 -->
-                    <div class="row pull-left">
-                        <button type="submit" class="btn btn-primary col-xs-offset-2">Add customer</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Add customer</button>
                 </form>
             </div>
         </div>

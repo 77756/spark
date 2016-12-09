@@ -120,13 +120,12 @@
                             </ul>
                         </li>
 
-                        <li class="nav-header hidden-folded">
-                            <small class="text-muted">Help</small>
-                        </li>
-
                         <li class="hidden-folded">
-                            <a href="docs.html">
-                                <span class="nav-text">Documents</span>
+                            <a href="/settings">
+                                <span class="nav-icon">
+                                    <i class="fa fa-fw fa-wrench"></i>
+                                </span>
+                                <span class="nav-text">Settings</span>
                             </a>
                         </li>
 
@@ -152,25 +151,25 @@
 
                 <!-- navbar collapse -->
                 <div class="collapse navbar-toggleable-sm" id="collapse">
-                    @if (Route::has('login'))
-                        <div class="top-right left">
+                    <div class="nav navbar-nav">
+                        @if (Route::has('login'))
                             @if (Auth::check())
                                 <a class="nav-link" href="{{ url('/home') }}">
                                     <i class="fa fa-fw fa-home text-muted"></i>
                                     <span>Home</span>
                                 </a>
                             @else
-                                <a href="{{ url('/login') }}">
-                                    <i class="fa fa-fw glyphicon-log-in text-muted"></i>
+                                <a class="nav-link pull-left pull-top" href="{{ url('/login') }}" aria-expanded="false">
+                                    <i class="fa fa-fw fa-sign-in text-muted"></i>
                                     <span>Login</span>
                                 </a>
-                                <a href="{{ url('/register') }}">
-                                    <i class="fa fa-fw glyphicon-registration-mark text-muted"></i>
+                                <a class="nav-link pull-right pull-top" href="{{ url('/register') }}" aria-expanded="false">
+                                    <i class="fa fa-fw  fa-plus-square-o text-muted"></i>
                                     <span>Register</span>
                                 </a>
                             @endif
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
                 <!-- / navbar collapse -->
             </div>
@@ -219,6 +218,8 @@
 <!-- Bootstrap -->
 <script src="/libs/jquery/tether/dist/js/tether.min.js"></script>
 <script src="/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/scripts/plugins/bootstrap-confirmation.min.js"></script>
 <!-- core -->
 <script src="/libs/jquery/underscore/underscore-min.js"></script>
 <script src="/libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>

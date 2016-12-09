@@ -1,11 +1,11 @@
 @extends('welcome')
 
 @section('content')
-    <div class="row">
+    <div class="padding">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h1>{{ $category->name }}</h1></div>
-                <div class="panel-body">
+            <div class="box">
+                <div class="box-header"><h2>{{ $category->name }}</h2></div>
+                <div class="box-body">
                     <ul class="list-group">
                     </ul>
                     <h2>Update category name</h2>
