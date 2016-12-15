@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
-
+use File;
 use Hash;
 use Redirect;
 
@@ -35,6 +36,7 @@ class ProfileDetailsController extends Controller {
             'lastName'    => 'required|max:50',
             'companyName' => 'required|max:100',
             'email'       => 'email|required|max:255|unique:users,email,' . $user->id,
+            'pic'         => 'file|image',
         ]);
         
         //if type is admin or guest empty the kvk, btw and ending fields in the database
@@ -48,6 +50,18 @@ class ProfileDetailsController extends Controller {
         
         //update database fields
         $user->update(request()->all());
+        
+        
+        //if profile picture has been uploaded
+        if (request()->pic) {
+            //store profile picture on disk
+            $pic = request()->pic->store('/img/' . $user->id, 'public');
+            
+            //store profile picture location on DB
+            request()->user()->forceFill([
+                'pic' => $pic
+            ])->update();
+        }
         
         //set tab variable where the form came from
         $tabName = request()->tabName;
@@ -115,8 +129,6 @@ class ProfileDetailsController extends Controller {
             ]);
             
             //update database fields
-            //$user->update(request()->all());
-            
             request()->user()->forceFill([
                 'password' => bcrypt(request()->password),
             ])->save();
@@ -129,11 +141,23 @@ class ProfileDetailsController extends Controller {
     }
     
     public function delete() {
-        $user = User::find(Auth::user()->id);
+        //get user
+        $user = Auth::user();
+    
+        //log user out
         Auth::logout();
         
-        if($user->delete()) {
+        //delete profile images belonging to user
+        \Storage::deleteDirectory('/public/img/' . $user->id);
+        
+        //delete customers made by user
+        Customer::where('user_id', $user->id)->delete();
+        
+        //delete user
+        if ($user->delete()) {
             return Redirect::route('login')->with('global', 'Your account has been deleted!');
         }
+        
+        return redirect('/settings/');
     }
 }

@@ -6,11 +6,11 @@
             <div class="box">
                 <div class="box-header"><h2>{{ $category->name }}</h2></div>
                 <div class="box-body">
-                    <h3>Add new entry</h3>
                     <form action="/newskill/{{ $category->id }}" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div id="nameDiv" class="form-group">
-                            <textarea name="name" class="form-control"></textarea>
+                        <div id="nameDiv" class="form-group {{ $errors->has('name') ? ' has-error' : '' }}{{ $errors->has('name') ? ' has-feedback' : '' }}">
+                            <label for="name" class="control-label">Add new skill</label>
+                            <input id="name" type="text" name="name" class="form-control">
                             @if ($errors->has('name'))
                                 @foreach($errors->get('name') as $error)
                                     <span class="help-block">{{ $error }}</span>

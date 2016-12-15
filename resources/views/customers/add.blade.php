@@ -6,164 +6,232 @@
         <div class="box">
             <div class="box-header"><h2>Add customer</h2></div>
             <div class="box-body">
-                <form role="form" action="/customers/store" method="post">
+                <form role="form" class="form-horizontal" enctype="multipart/form-data" action="/customers/store"
+                      method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <!-- row 1 -->
-                    <div class="row">
-                        <!-- company name -->
-                        <div id="nameDiv" class="form-group col-xs-6">
-                            <label for="name" class="control-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="name"
-                                   placeholder="Max. 100 long, unique" value="{{ old('name') }}">
-                            @if ($errors->has('name'))
-                                @foreach($errors->get('name') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
+
+                    <!-- company name -->
+                    <div id="nameDiv"
+                         class="col-sm-6 form-group {{ $errors->has('companyName') ? ' has-error' : '' }}{{ $errors->has('companyName') ? ' has-feedback' : '' }}">
+                        <label for="companyName" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="companyName" id="companyName"
+                                   placeholder="Max. 100 long, unique" value="{{ old('companyName') }}">
                         </div>
 
-                        <!-- company mail -->
-                        <div class="form-group col-xs-6" id="emailDiv">
-                            <label for="email" class="control-label">E-mail address</label>
+                        @if ($errors->has('companyName'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('companyName') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <!-- company mail -->
+                    <div id="emailDiv"
+                         class="col-sm-6 form-group {{ $errors->has('email') ? ' has-error' : '' }}{{ $errors->has('email') ? ' has-feedback' : '' }}">
+                        <label for="email" class="col-sm-2 control-label">E-mail address</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="email" id="email"
                                    placeholder="Valid e-mail, unique" value="{{ old('email') }}">
-                            @if ($errors->has('email'))
-                                @foreach($errors->get('email') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
+                        @if ($errors->has('email'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                        @endif
                     </div>
-                    <!-- /row 1 -->
 
-                    <!-- row 1.2 -->
-                    <div class="row">
-                        <!-- company phone number -->
-                        <div class="form-group col-xs-6" id="phoneDiv">
-                            <label for="phone" class="control-label">Phone number</label>
+
+                    <!-- company phone number -->
+                    <div id="phoneDiv"
+                         class="col-sm-6 form-group {{ $errors->has('phone') ? ' has-error' : '' }}{{ $errors->has('phone') ? ' has-feedback' : '' }}">
+                        <label for="phone" class="col-sm-2 control-label">Phone number</label>
+                        <div class="col-sm-10">
                             <input type="tel" class="form-control" name="phone" id="phone"
                                    placeholder="Max. 20 long" value="{{ old('phone') }}">
-                            @if ($errors->has('phone'))
-                                @foreach($errors->get('phone') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
 
-                        <!-- end date -->
-                        <div class="form-group col-xs-6" id="ending_onDiv">
-                            <label for="ending_on" class="control-label">End date</label>
+                        @if ($errors->has('phone'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('phone') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <!-- end date -->
+                    <div id="ending_onDiv"
+                         class="col-sm-6 form-group {{ $errors->has('ending_on') ? ' has-error' : '' }}{{ $errors->has('ending_on') ? ' has-feedback' : '' }}">
+                        <label for="ending_on" class="col-sm-2 control-label">End date</label>
+                        <div class="col-sm-10">
                             <input type="date" class="form-control" name="ending_on" id="ending_on"
                                    value="{{ old('ending_on') }}">
-                            @if ($errors->has('ending_on'))
-                                @foreach($errors->get('ending_on') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
+
+                        @if ($errors->has('ending_on'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('ending_on') }}</strong></span>
+                        @endif
                     </div>
-                    <!-- /row 1.2 -->
-                    <hr>
-                    <!-- row 2 -->
-                    <div class="row">
-                        <!-- company street -->
-                        <div class="form-group col-xs-6" id="streetDiv">
-                            <label for="street" class="control-label">Street</label>
+
+
+                    <!-- company street -->
+                    <div id="streetDiv"
+                         class="col-sm-6 form-group {{ $errors->has('street') ? ' has-error' : '' }}{{ $errors->has('street') ? ' has-feedback' : '' }}">
+                        <label for="street" class="col-sm-2 control-label">Street</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="street" id="street"
                                    placeholder="Max. 100 long" value="{{ old('street') }}">
-                            @if ($errors->has('street'))
-                                @foreach($errors->get('street') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
 
-                        <!-- company street number -->
-                        <div class="form-group col-xs-6" id="streetNumDiv">
-                            <label for="streetNum" class="control-label">Number</label>
+                        @if ($errors->has('street'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <!-- company street number -->
+                    <div id="streetNumDiv"
+                         class="col-sm-6 form-group {{ $errors->has('streetNum') ? ' has-error' : '' }}{{ $errors->has('streetNum') ? ' has-feedback' : '' }}">
+                        <label for="streetNum" class="col-sm-2 control-label">Number</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="streetNum" id="streetNum"
                                    placeholder="Max. 11 long" value="{{ old('streetNum') }}">
-                            @if ($errors->has('streetNum'))
-                                @foreach($errors->get('streetNum') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
-                    </div>
-                    <!-- /row 2 -->
 
-                    <!-- row 3 -->
-                    <div class="row">
-                        <!-- company zip code -->
-                        <div class="form-group col-xs-6" id="zipDiv">
-                            <label for="zip" class="control-label">Zip code</label>
+                        @if ($errors->has('streetNum'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('streetNum') }}</strong></span>
+                        @endif
+                    </div>
+
+
+                    <!-- company zip code -->
+                    <div id="zipDiv"
+                         class="col-sm-6 form-group {{ $errors->has('zip') ? ' has-error' : '' }}{{ $errors->has('zip') ? ' has-feedback' : '' }}">
+                        <label for="zip" class="col-sm-2 control-label">Zip code</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="zip" id="zip"
                                    placeholder="Max. 10 long" value="{{ old('zip') }}">
-                            @if ($errors->has('zip'))
-                                @foreach($errors->get('zip') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
 
-                        <!-- company city -->
-                        <div class="form-group col-xs-6" id="cityDiv">
-                            <label for="city" class="control-label">City</label>
+                        @if ($errors->has('zip'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('zip') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <!-- company city -->
+                    <div id="cityDiv"
+                         class="col-sm-6 form-group {{ $errors->has('city') ? ' has-error' : '' }}{{ $errors->has('city') ? ' has-feedback' : '' }}">
+                        <label for="city" class="col-sm-2 control-label">City</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="city" id="city"
                                    placeholder="Max. 100 long" value="{{ old('city') }}">
-                            @if ($errors->has('city'))
-                                @foreach($errors->get('city') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
-                    </div>
-                    <!-- /row 3 -->
 
-                    <!-- row 4 -->
-                    <div class="row">
-                        <!-- company country -->
-                        <div class="form-group col-xs-6" id="countryDiv">
-                            <label for="country" class="control-label">Country</label>
+                        @if ($errors->has('city'))
+                            @foreach($errors->get('city') as $error)
+                                <span class="help-block"><strong>{{ $error }}</strong></span>
+                            @endforeach
+                        @endif
+                    </div>
+
+                    <!-- company country -->
+                    <div id="countryDiv"
+                         class="m-l-1 col-sm-6 col-sm-pull-6 form-group {{ $errors->has('country') ? ' has-error' : '' }}{{ $errors->has('country') ? ' has-feedback' : '' }}">
+                        <label for="country" class="col-sm-2 control-label">Country</label>
+                        .3+
+-                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="country" id="country"
                                    placeholder="Max. 100 long" value="{{ old('country') }}">
-                            @if ($errors->has('country'))
-                                @foreach($errors->get('country') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
-                    <!-- /row 4 -->
-                    <hr>
-                    <!-- row 5 -->
-                    <div class="row">
-                        <!-- company kvk -->
-                        <div class="form-group col-xs-6" id="kvkDiv">
-                            <label for="kvk" class="control-label">KVK</label>
-                            <input type="number" class="form-control" name="kvk" id="kvk"
-                                   placeholder="Must be 8 long, unique" value="{{ old('kvk') }}">
-                            @if ($errors->has('kvk'))
-                                @foreach($errors->get('kvk') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
 
-                        <!-- company btw -->
-                        <div class="form-group col-xs-6" id="btwDiv">
-                            <label for="btw" class="control-label">BTW</label>
+                        @if ($errors->has('countryDiv'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('countryDiv') }}</strong></span>
+                        @endif
+                    </div>
+
+
+                    <!-- company kvk -->
+                    <div id="kvkDiv"
+                         class="col-sm-6 form-group {{ $errors->has('kvk') ? ' has-error' : '' }}{{ $errors->has('kvk') ? ' has-feedback' : '' }}">
+                        <label for="kvk" class="col-sm-2 control-label">KVK Nr.</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" name="kvk" id="kvk"
+                                   placeholder="Must be 8 long, unique" value="{{ old('kvk') }}">
+                        </div>
+
+                        @if ($errors->has('kvk'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('kvk') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <!-- company btw -->
+                    <div id="btwDiv"
+                         class="col-sm-6 form-group {{ $errors->has('btw') ? ' has-error' : '' }}{{ $errors->has('btw') ? ' has-feedback' : '' }}">
+                        <label for="btw" class="col-sm-2 control-label">BTW Nr.</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="btw" id="btw"
                                    placeholder="Max. 25 long, unique" value="{{ old('btw') }}">
-                            @if ($errors->has('btw'))
-                                @foreach($errors->get('btw') as $error)
-                                    <span class="help-block">{{ $error }}</span>
-                                @endforeach
-                            @endif
                         </div>
+
+                        @if ($errors->has('btw'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block"><strong>{{ $errors->first('btw') }}</strong></span>
+                        @endif
                     </div>
+
+
+                    <div id="picDiv"
+                         class="form-group {{ $errors->has('pic') ? ' has-error' : '' }}{{ $errors->has('pic') ? ' has-feedback' : '' }}">
+                        <label class="col-sm-2 control-label" for="pic">Profile picture</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="pic" id="pic">
+                        </div>
+
+
+                        @if ($errors->has('pic'))
+                            <i class="form-control-feedback m-r-xs">
+                                <span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                            </i>
+                            <span class="sr-only">(error)</span>
+                            <span class="help-block">
+                                    <strong>{{ $errors->first('pic') }}</strong>
+                                </span>
+                        @endif
+                    </div>
+
+                    <!-- /row 6 -->
                     <hr/>
-                    <!-- /row 5 -->
                     <button type="submit" class="btn btn-primary">Add customer</button>
                 </form>
             </div>

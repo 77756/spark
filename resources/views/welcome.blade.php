@@ -26,11 +26,11 @@
     <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css" type="text/css"/>
     <link rel="stylesheet" href="/assets/material-design-icons/material-design-icons.css" type="text/css"/>
     <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" type="text/css"/>
     <!-- build:css /assets/styles/app.min.css -->
     <link rel="stylesheet" href="/assets/styles/app.css" type="text/css"/>
-    <!-- endbuild -->
     <link rel="stylesheet" href="/assets/styles/font.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" type="text/css"/>
+    <!-- endbuild -->
 </head>
 <body>
 <div class="app" id="app">
@@ -79,7 +79,7 @@
                         <span ui-include="'/assets/images/i_1.svg'"></span>
                       </i>
                     </span>
-                                <span class="nav-text">Search</span>
+                                <span class="nav-text">Skills</span>
                             </a>
                             <ul class="nav-sub">
                                 <li>
@@ -149,6 +149,34 @@
                 <!-- Page title - Bind to $state's title -->
                 <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
 
+                <!-- nav right -->
+                @if (Auth::check())
+                <ul class="nav navbar-nav pull-right">
+                    @if (Auth::user()->pic)
+                    <li class="nav-item dropdown">
+                        <a style="background-color: transparent !important;" class="nav-link clear" href data-toggle="dropdown" aria-expanded="false">
+                                <span class="avatar w-32">
+                                    <img src="/storage/{{Auth::user()->pic}}">
+                                </span>
+                        </a>
+                        <div class="dropdown-menu pull-right dropdown-menu-scale">
+                            <a class="dropdown-item" href="/logout">
+                                <i class="fa fa-fw fa-sign-out"></i>
+                                <span>Sign out</span>
+                            </a>
+                        </div>
+                    </li>
+                    @endif
+                    <li class="nav-item hidden-md-up">
+                        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapse"
+                           aria-expanded="false">
+                            <i class="material-icons"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- / nav right -->
+                @endif
+
                 <!-- navbar collapse -->
                 <div class="collapse navbar-toggleable-sm" id="collapse">
                     <div class="nav navbar-nav">
@@ -163,7 +191,8 @@
                                     <i class="fa fa-fw fa-sign-in text-muted"></i>
                                     <span>Login</span>
                                 </a>
-                                <a class="nav-link pull-right pull-top" href="{{ url('/register') }}" aria-expanded="false">
+                                <a class="nav-link pull-right pull-top" href="{{ url('/register') }}"
+                                   aria-expanded="false">
                                     <i class="fa fa-fw  fa-plus-square-o text-muted"></i>
                                     <span>Register</span>
                                 </a>
@@ -210,16 +239,16 @@
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script src="/libs/jquery/screenfull/dist/screenfull.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/libs/jquery/tether/dist/js/tether.min.js"></script>
+<script src="/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
 
 <!-- DataTables -->
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
-<!-- Bootstrap -->
-<script src="/libs/jquery/tether/dist/js/tether.min.js"></script>
-<script src="/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="/js/scripts/plugins/bootstrap-confirmation.min.js"></script>
 <!-- core -->
 <script src="/libs/jquery/underscore/underscore-min.js"></script>
 <script src="/libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>

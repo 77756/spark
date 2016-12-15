@@ -28,13 +28,14 @@ class CreateUsersTable extends Migration
             $table->string('city', 100)->nullable();
             $table->string('country', 100)->nullable();
 
-            $table->string('phone', 15)->nullable();
-            $table->string('mobile', 15)->nullable();
+            $table->string('phone', 30)->nullable();
+            $table->string('mobile', 30)->nullable();
 
             $table->integer('kvk')->nullable()->unique();
-            $table->string('btw', 15)->nullable()->unique();
+            $table->string('btw', 30)->nullable()->unique();
 
             $table->date('ending_on')->nullable();
+            $table->string('pic', 255)->nullable();
 
             $table->rememberToken();
             $table->timestamps();

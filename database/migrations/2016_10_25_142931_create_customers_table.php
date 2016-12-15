@@ -17,16 +17,17 @@ class CreateCustomersTable extends Migration {
             $table->integer('user_id')->unsigned()->index();
 
             //Company
-            $table->string('name', 100)->unique();
+            $table->string('companyName', 100)->unique();
             $table->string('email')->unique();
-            $table->string('phone', 15);
+            $table->string('phone', 30);
             $table->string('street', 100);
             $table->string('streetNum', 11);
             $table->string('zip', 10);
             $table->string('city', 100);
             $table->string('country', 100);
             $table->integer('kvk')->unique();
-            $table->string('btw', 15)->unique();
+            $table->string('btw', 30)->unique();
+            $table->string('pic', 255)->nullable();
 
             //dates
             $table->date('ending_on');

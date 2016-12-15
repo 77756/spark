@@ -120,7 +120,6 @@ return [
         'lastName'    => 'Last name',
         'type'        => 'User type',
         'companyName' => 'Company name',
-        'name'        => 'Company name',
         'phone'       => 'Phone number',
         'mobile'      => 'Mobile number',
         'street'      => 'Street name',
@@ -134,6 +133,7 @@ return [
         'kvk'         => 'KVK number',
         'btw'         => 'BTW number',
         'ending_on'   => 'End date',
+        'pic'         => 'profile picture',
     ],
 
 ];

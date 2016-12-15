@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use File;
 
 class HomeController extends Controller {
     /**
@@ -21,7 +22,9 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('home');
+        $user = Auth::user();
+        
+        return view('home', compact('user'));
     }
     
     public function logout() {

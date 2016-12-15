@@ -11,7 +11,7 @@ class Customer extends Model {
      * @var array
      */
     protected $fillable = [
-        'name',
+        'companyName',
         'email',
         'phone',
         'street',
@@ -22,6 +22,7 @@ class Customer extends Model {
         'kvk',
         'btw',
         'ending_on',
+        'pic',
     ];
 
     protected $hidden = [

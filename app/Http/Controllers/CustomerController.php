@@ -20,7 +20,7 @@ class CustomerController extends Controller {
     
     public function show() {
         $user = Auth::user();
-
+        
         return view('customers.show', compact('user'));
     }
     
@@ -32,22 +32,37 @@ class CustomerController extends Controller {
         $customer = new Customer;
         
         $this->validate(request(), [
-            'name'      => 'required|unique:customers|max:100|filled',
-            'email'     => 'email|required|unique:customers|max:255|filled',
-            'phone'     => 'required|max:20|filled',
-            'ending_on' => 'required|date|filled',
+            'companyName' => 'required|unique:customers|max:100|filled',
+            'email'       => 'email|required|unique:customers|max:255|filled',
+            'phone'       => 'required|max:20|filled',
+            'ending_on'   => 'required|date|filled',
             
             'street'    => 'required|max:100|filled',
             'streetNum' => 'required|max:11|filled',
             'zip'       => 'required|max:10|filled',
             'city'      => 'required|max:100|filled',
             'country'   => 'required|max:100|filled',
+            'kvk'       => 'required|unique:customers|digits:8|filled',
+            'btw'       => 'required|unique:customers|max:25|filled',
             
-            'kvk' => 'required|unique:customers|digits:8|filled',
-            'btw' => 'required|unique:customers|max:25|filled',
+            'pic' => 'file|image',
         ]);
         
         $customer->fill(request()->all());
+        $customer->forceFill([
+            'user_id' => Auth::user()->id
+        ])->save();
+        
+        //if profile picture has been uploaded
+        if (request()->pic) {
+            //store profile picture on disk
+            $pic = request()->pic->store('/img/customers/' . $customer->id, 'public');
+            
+            //store profile picture location on DB
+            $customer->forceFill([
+                'pic' => $pic
+            ])->save();
+        }
         
         Auth::user()->customers()->save($customer);
         
@@ -82,9 +97,21 @@ class CustomerController extends Controller {
             'kvk'       => 'required|unique:customers,kvk,' . $customer->id . '|digits:8|filled',
             'btw'       => 'required|unique:customers,btw,' . $customer->id . '|max:25|filled',
             'ending_on' => 'required|date|filled',
+            'pic'       => 'file|image',
         ]);
         
         $customer->update(request()->all());
+        
+        //if profile picture has been uploaded
+        if (request()->pic) {
+            //store profile picture on disk
+            $pic = request()->pic->store('/img/customers/' . $customer->id, 'public');
+            
+            //store profile picture location on DB
+            $customer->forceFill([
+                'pic' => $pic
+            ])->update();
+        }
         
         return redirect('/customers/show');
     }

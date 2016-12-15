@@ -6,11 +6,17 @@
             <div class="box">
                 <div class="box-header"><h2>All Branches</h2></div>
                 <div class="box-body">
-                    <strong>New branche</strong>
                     <form action="/newbranche" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Branch name" required/>
+                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}{{ $errors->has('name') ? ' has-feedback' : '' }}">
+                            <label for="name" class="control-label">New branche</label>
+                            <input id="name" type="text" name="name" class="form-control" placeholder="Branch name"
+                                   required/>
+                            @if ($errors->has('name'))
+                                @foreach($errors->get('name') as $error)
+                                    <span class="help-block">{{ $error }}</span>
+                                @endforeach
+                            @endif
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Add Branche</button>
@@ -54,8 +60,8 @@
                         @endforeach
                         </tbody>
                     </table>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
 @endsection

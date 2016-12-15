@@ -31,6 +31,7 @@ class User extends Authenticatable
         'kvk',
         'btw',
         'ending_on',
+        'pic',
     ];
 
     /**

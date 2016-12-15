@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="padding">
-        <form role="form" action="/customers/{{ $customer->id }}/update" method="post">
+        <form role="form" enctype="multipart/form-data" action="/customers/{{ $customer->id }}/update" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             {{ method_field('patch') }}
             <div class="box">
-                <div class="box-header">Edit customer</div>
+                <div class="box-header"><h2>Edit {{$customer->name}}</h2></div>
                 <div class="box-body">
                     <!-- row 1 -->
                     <div class="row">
                         <!-- company name -->
-                        <div id="nameDiv" class="form-group col-xs-6">
+                        <div id="nameDiv" class="form-group col-xs-6 {{ $errors->has('name') ? ' has-error' : '' }}{{ $errors->has('name') ? ' has-feedback' : '' }}name">
                             <label for="name" class="control-label">Name</label>
                             <input type="text" class="form-control" name="name" id="name"
                                    placeholder="Max. 100 long, unique" value="{{ $customer->name }}">
@@ -23,7 +23,7 @@
                         </div>
 
                         <!-- company mail -->
-                        <div class="form-group col-xs-6" id="emailDiv">
+                        <div id="emailDiv" class="form-group col-xs-6 {{ $errors->has('email') ? ' has-error' : '' }}{{ $errors->has('email') ? ' has-feedback' : '' }}">
                             <label for="email" class="control-label">E-mail address</label>
                             <input type="text" class="form-control" name="email" id="email"
                                    placeholder="Valid e-mail, unique" value="{{ $customer->email }}">
@@ -39,7 +39,7 @@
                     <!-- row 1.2 -->
                     <div class="row">
                         <!-- company phone number -->
-                        <div class="form-group col-xs-6" id="phoneDiv">
+                        <div id="phoneDiv" class="form-group col-xs-6 {{ $errors->has('phone') ? ' has-error' : '' }}{{ $errors->has('phone') ? ' has-feedback' : '' }}">
                             <label for="phone" class="control-label">Phone number</label>
                             <input type="tel" class="form-control" name="phone" id="phone"
                                    placeholder="Max. 20 long" value="{{ $customer->phone }}">
@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- end date -->
-                        <div class="form-group col-xs-6" id="ending_onDiv">
+                        <div id="ending_onDiv" class="form-group col-xs-6 {{ $errors->has('ending_on') ? ' has-error' : '' }}{{ $errors->has('ending_on') ? ' has-feedback' : '' }}">
                             <label for="ending_on" class="control-label">End date</label>
                             <input type="date" class="form-control" name="ending_on" id="ending_on"
                                    value="{{ $customer->ending_on }}">
@@ -67,7 +67,7 @@
                     <!-- row 2 -->
                     <div class="row">
                         <!-- company street -->
-                        <div class="form-group col-xs-6" id="streetDiv">
+                        <div id="streetDiv" class="form-group col-xs-6 {{ $errors->has('street') ? ' has-error' : '' }}{{ $errors->has('street') ? ' has-feedback' : '' }}">
                             <label for="street" class="control-label">Street</label>
                             <input type="text" class="form-control" name="street" id="street"
                                    placeholder="Max. 100 long" value="{{ $customer->street }}">
@@ -79,7 +79,7 @@
                         </div>
 
                         <!-- company street number -->
-                        <div class="form-group col-xs-6" id="streetNumDiv">
+                        <div id="streetNumDiv" class="form-group col-xs-6 {{ $errors->has('streetNum') ? ' has-error' : '' }}{{ $errors->has('streetNum') ? ' has-feedback' : '' }}">
                             <label for="streetNum" class="control-label">Number</label>
                             <input type="text" class="form-control" name="streetNum" id="streetNum"
                                    placeholder="Max. 11 long" value="{{ $customer->streetNum }}">
@@ -95,7 +95,7 @@
                     <!-- row 3 -->
                     <div class="row">
                         <!-- company zip code -->
-                        <div class="form-group col-xs-6" id="zipDiv">
+                        <div id="zipDiv" class="form-group col-xs-6 {{ $errors->has('zip') ? ' has-error' : '' }}{{ $errors->has('zip') ? ' has-feedback' : '' }}">
                             <label for="zip" class="control-label">Zip code</label>
                             <input type="text" class="form-control" name="zip" id="zip"
                                    placeholder="Max. 10 long" value="{{ $customer->zip }}">
@@ -107,7 +107,7 @@
                         </div>
 
                         <!-- company city -->
-                        <div class="form-group col-xs-6" id="cityDiv">
+                        <div id="cityDiv" class="form-group col-xs-6 {{ $errors->has('city') ? ' has-error' : '' }}{{ $errors->has('city') ? ' has-feedback' : '' }}">
                             <label for="city" class="control-label">City</label>
                             <input type="text" class="form-control" name="city" id="city"
                                    placeholder="Max. 100 long" value="{{ $customer->city }}">
@@ -123,7 +123,7 @@
                     <!-- row 4 -->
                     <div class="row">
                         <!-- company country -->
-                        <div class="form-group col-xs-6" id="countryDiv">
+                        <div id="countryDiv" class="form-group col-xs-6 {{ $errors->has('country') ? ' has-error' : '' }}{{ $errors->has('country') ? ' has-feedback' : '' }}">
                             <label for="country" class="control-label">Country</label>
                             <input type="text" class="form-control" name="country" id="country"
                                    placeholder="Max. 100 long" value="{{ $customer->country }}">
@@ -139,7 +139,7 @@
                     <!-- row 5 -->
                     <div class="row">
                         <!-- company kvk -->
-                        <div class="form-group col-xs-6" id="kvkDiv">
+                        <div id="kvkDiv" class="form-group col-xs-6 {{ $errors->has('kvk') ? ' has-error' : '' }}{{ $errors->has('kvk') ? ' has-feedback' : '' }}">
                             <label for="kvk" class="control-label">KVK</label>
                             <input type="number" class="form-control" name="kvk" id="kvk"
                                    placeholder="Must be 8 long, unique" value="{{ $customer->kvk }}">
@@ -151,7 +151,7 @@
                         </div>
 
                         <!-- company btw -->
-                        <div class="form-group col-xs-6" id="btwDiv">
+                        <div id="btwDiv" class="form-group col-xs-6 {{ $errors->has('btw') ? ' has-error' : '' }}{{ $errors->has('btw') ? ' has-feedback' : '' }}">
                             <label for="btw" class="control-label">BTW</label>
                             <input type="text" class="form-control" name="btw" id="btw"
                                    placeholder="Max. 25 long, unique" value="{{ $customer->btw }}">
@@ -162,8 +162,28 @@
                             @endif
                         </div>
                     </div>
-                    <hr/>
                     <!-- /row 5 -->
+                    <!-- row 6 -->
+                    <div class="row">
+                        <div class="col-xs-6 form-group {{ $errors->has('pic') ? ' has-error' : '' }}{{ $errors->has('pic') ? ' has-feedback' : '' }}">
+                            <label class="control-label" for="pic">Profile picture</label>
+                            <input type="file" name="pic" id="pic">
+
+                            @if ($errors->has('pic'))
+                                <i class="form-control-feedback m-r-xs">
+                                            <span class="fa fa-exclamation-triangle"
+                                                  aria-hidden="true">
+                                            </span>
+                                </i>
+                                <span class="sr-only">(error)</span>
+                                <span class="help-block">
+                                            <strong>{{ $errors->first('pic') }}</strong>
+                                        </span>
+                            @endif
+                        </div>
+                    </div>
+                    <!-- /row 6 -->
+                    <hr/>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>

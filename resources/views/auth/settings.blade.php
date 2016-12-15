@@ -38,7 +38,7 @@
                 <div class="tab-pane {{ empty($tabName) || $tabName == 'tab-1' ? 'active' : '' }}" id="tab-1">
                     <div class="box-header"><h2>Profile</h2></div>
                     <div class="box-body">
-                        <form role="form" method="post" action="/settings/profile/update">
+                        <form role="form" enctype="multipart/form-data" method="post" action="/settings/profile/update">
                             {{ method_field('patch') }}
                             {{ csrf_field() }}
                             <input type="hidden" id="tabName" name="tabName" value="tab-1">
@@ -150,6 +150,24 @@
                                         <span class="sr-only">(error)</span>
                                         <span class="help-block">
                                             <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 form-group {{ $errors->has('pic') ? ' has-error' : '' }}{{ $errors->has('pic') ? ' has-feedback' : '' }}">
+                                    <label class="control-label" for="pic">Profile picture</label>
+                                    <input type="file" name="pic" id="pic">
+
+                                    @if ($errors->has('pic'))
+                                        <i class="form-control-feedback m-r-xs">
+                                            <span class="fa fa-exclamation-triangle"
+                                                  aria-hidden="true">
+                                            </span>
+                                        </i>
+                                        <span class="sr-only">(error)</span>
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('pic') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -367,6 +385,7 @@
                         </form>
                     </div>
                 </div>
+                <!-- security tab -->
                 <div class="tab-pane {{ !empty($tabName) && $tabName == 'tab-3' ? 'active' : '' }}" id="tab-3">
                     <div class="box-header"><h2>Security</h2></div>
                     <div class="box-body">
@@ -440,14 +459,31 @@
                         </form>
                         <br/>
                         <br/>
-                        <button id="deletebtn" class="btn btn-danger" data-toggle="confirmation"
-                                data-btn-ok-label="Delete" data-btn-ok-icon="fa fa-fw fa-trash"
-                                data-btn-ok-class="btn-danger" data-bt-cancel-label="Stop"
-                                data-btn-cancel-icon="fa fa-fw fa-close" data-btn-cancel-class="btn-info"
-                                data-title="Delete account" data-content="Are you sure?"
-                                data-placement="bottom" data-popout="true">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                             Delete account
                         </button>
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                             aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="deleteModalLabel">Delete account</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this account?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Cancel
+                                        </button>
+                                        <a class="btn btn-danger" href="/settings/delete">Yes, delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -457,41 +493,24 @@
 @endsection
 @push('scripts')
 <script>
-    $(document).ready(function () {
-        function typeSelect() {
-            var typeSelectList = $('select#type');
-            var selectedValue  = $('option:selected', typeSelectList).val();
+    function typeSelect() {
+        var typeSelectList = $('select#type');
+        var selectedValue  = $('option:selected', typeSelectList).val();
 
-            if (selectedValue == "Company" || selectedValue == "Contact person") {
-                if (selectedValue == "Contact person") {
-                    $('#kvk').val('');
-                    $('#btw').val('');
-                }
-            } else {
-                $('#ending_on').val('');
+        if (selectedValue == "Company" || selectedValue == "Contact person") {
+            if (selectedValue == "Contact person") {
                 $('#kvk').val('');
                 $('#btw').val('');
             }
+        } else {
+            $('#ending_on').val('');
+            $('#kvk').val('');
+            $('#btw').val('');
         }
+    }
 
-        $(function () {
-            $('select#type').change(typeSelect);
-        });
-
-        $('[data-toggle=confirmation]').confirmation({
-            rootSelector: '[data-toggle=confirmation]',
-            onConfirm:    function () {
-                window.location.href = '/settings/delete';
-            }
-        });
-
-//        $('#deletebtn').confirmation({
-//            rootSelector: '#deletebtn',
-//            selector: '[data-toggle=confirmation]',
-//            onConfirm:    function () {
-//                window.location.href = '/settings/delete';
-//            }
-//        });
+    $(function () {
+        $('select#type').change(typeSelect);
     });
 </script>
 @endpush
